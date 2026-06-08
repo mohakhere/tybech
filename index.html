@@ -1,794 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>Helixor Healthcare Exports</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --primary:#0d1b2a;
-      --secondary:#1b263b;
-      --accent:#a67c52;
-      --text:#4b5563;
-      --light:#f5f4f0;
-      --border:#d6d3cc;
-      --white:#ffffff;
-    }
-
-    body{
-      font-family: "Georgia", "Times New Roman", serif;
-      background:var(--light);
-      color:var(--primary);
-      line-height:1.7;
-      overflow-x:hidden;
-    }
-
-    p{
-      font-family: Arial, Helvetica, sans-serif;
-      color:var(--text);
-      font-size:0.98rem;
-    }
-
-    a{
-      text-decoration:none;
-    }
-
-    img{
-      width:100%;
-      display:block;
-    }
-
-    /* ---------------- HEADER ---------------- */
-
-    header{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:1000;
-      transition:0.4s ease;
-      padding:22px 0;
-    }
-
-    header.scrolled{
-      background:rgba(245,244,240,0.94);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(0,0,0,0.06);
-      padding:16px 0;
-    }
-
-    .container{
-      width:90%;
-      max-width:1240px;
-      margin:auto;
-    }
-
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .logo{
-      font-size:1.35rem;
-      font-weight:600;
-      letter-spacing:1px;
-    }
-
-    .logo span{
-      color:var(--accent);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:38px;
-      align-items:center;
-    }
-
-    .nav-links a{
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--primary);
-      font-size:0.93rem;
-      position:relative;
-    }
-
-    .nav-links a::after{
-      content:'';
-      position:absolute;
-      left:0;
-      bottom:-8px;
-      width:0%;
-      height:1px;
-      background:var(--accent);
-      transition:0.35s ease;
-    }
-
-    .nav-links a:hover::after{
-      width:100%;
-    }
-
-    .contact-btn{
-      border:1px solid rgba(0,0,0,0.1);
-      padding:11px 18px;
-      transition:0.3s ease;
-    }
-
-    .contact-btn:hover{
-      background:var(--primary);
-      color:#fff;
-    }
-
-    /* ---------------- HERO ---------------- */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      background:
-      linear-gradient(
-      rgba(13,27,42,0.50),
-      rgba(13,27,42,0.50)),
-      url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1800&auto=format&fit=crop') center/cover;
-      position:relative;
-    }
-
-    .hero-content{
-      max-width:760px;
-      color:#fff;
-      padding-top:80px;
-    }
-
-    .hero-sub{
-      font-family:Arial, Helvetica, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-size:0.8rem;
-      margin-bottom:24px;
-      opacity:0.85;
-    }
-
-    .hero h1{
-      font-size:5.1rem;
-      line-height:1.08;
-      font-weight:500;
-      margin-bottom:28px;
-    }
-
-    .hero p{
-      color:rgba(255,255,255,0.88);
-      font-size:1.05rem;
-      max-width:620px;
-      margin-bottom:36px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      font-family:Arial, Helvetica, sans-serif;
-      padding:14px 24px;
-      font-size:0.92rem;
-      transition:0.35s ease;
-    }
-
-    .btn-primary{
-      background:var(--accent);
-      color:#fff;
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      background:#916844;
-    }
-
-    .btn-secondary{
-      border:1px solid rgba(255,255,255,0.4);
-      color:#fff;
-      background:transparent;
-    }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,0.08);
-    }
-
-    /* ---------------- SECTION ---------------- */
-
-    section{
-      padding:110px 0;
-    }
-
-    .section-header{
-      display:flex;
-      justify-content:space-between;
-      gap:40px;
-      margin-bottom:70px;
-      align-items:flex-end;
-    }
-
-    .section-title{
-      font-size:3rem;
-      line-height:1.2;
-      max-width:560px;
-      font-weight:500;
-    }
-
-    .section-header p{
-      max-width:520px;
-    }
-
-    /* ---------------- ABOUT ---------------- */
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:70px;
-      align-items:center;
-    }
-
-    .about-image{
-      overflow:hidden;
-    }
-
-    .about-image img{
-      transition:transform 1.8s ease;
-    }
-
-    .about-image:hover img{
-      transform:scale(1.05);
-    }
-
-    .about-content h3{
-      font-size:2rem;
-      font-weight:500;
-      margin-bottom:26px;
-      line-height:1.35;
-    }
-
-    .about-content p{
-      margin-bottom:20px;
-    }
-
-    /* ---------------- SERVICES ---------------- */
-
-    .services{
-      background:#fff;
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      border-top:1px solid var(--border);
-      border-left:1px solid var(--border);
-    }
-
-    .service-card{
-      padding:50px;
-      border-right:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-      transition:0.45s ease;
-      background:#fff;
-      position:relative;
-    }
-
-    .service-card:hover{
-      background:#faf8f3;
-    }
-
-    .service-number{
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--accent);
-      margin-bottom:22px;
-      font-size:0.9rem;
-      letter-spacing:1px;
-    }
-
-    .service-card h4{
-      font-size:1.45rem;
-      font-weight:500;
-      margin-bottom:16px;
-    }
-
-    /* ---------------- STATS ---------------- */
-
-    .stats{
-      background:var(--primary);
-      color:#fff;
-    }
-
-    .stats .section-title{
-      color:#fff;
-    }
-
-    .stats-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:40px;
-      margin-top:70px;
-    }
-
-    .stat{
-      border-left:1px solid rgba(255,255,255,0.15);
-      padding-left:24px;
-    }
-
-    .stat h2{
-      font-size:3.4rem;
-      font-weight:500;
-      margin-bottom:10px;
-    }
-
-    .stat p{
-      color:rgba(255,255,255,0.75);
-    }
-
-    /* ---------------- CONTACT ---------------- */
-
-    .contact-wrap{
-      display:grid;
-      grid-template-columns:0.9fr 1.1fr;
-      gap:80px;
-      align-items:start;
-    }
-
-    .contact-details h3{
-      font-size:2rem;
-      font-weight:500;
-      margin-bottom:24px;
-    }
-
-    .contact-details p{
-      margin-bottom:16px;
-    }
-
-    form{
-      background:#fff;
-      padding:50px;
-      border:1px solid var(--border);
-    }
-
-    .form-row{
-      margin-bottom:20px;
-    }
-
-    input,
-    textarea{
-      width:100%;
-      border:none;
-      border-bottom:1px solid #c8c4bc;
-      padding:16px 0;
-      background:transparent;
-      font-size:0.96rem;
-      font-family:Arial, Helvetica, sans-serif;
-      outline:none;
-    }
-
-    textarea{
-      min-height:140px;
-      resize:vertical;
-    }
-
-    .submit-btn{
-      margin-top:20px;
-      border:none;
-      background:var(--primary);
-      color:#fff;
-      padding:15px 26px;
-      cursor:pointer;
-      transition:0.35s ease;
-    }
-
-    .submit-btn:hover{
-      background:#16263d;
-    }
-
-    /* ---------------- FOOTER ---------------- */
-
-    footer{
-      background:#0a1420;
-      color:rgba(255,255,255,0.65);
-      padding:40px 0;
-      text-align:center;
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:0.88rem;
-    }
-
-    /* ---------------- REVEAL ---------------- */
-
-    .reveal{
-      opacity:0;
-      transform:translateY(50px);
-      transition:1s ease;
-    }
-
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* ---------------- RESPONSIVE ---------------- */
-
-    @media(max-width:980px){
-
-      .hero h1{
-        font-size:3.5rem;
-      }
-
-      .about-grid,
-      .contact-wrap,
-      .stats-grid,
-      .services-grid{
-        grid-template-columns:1fr;
-      }
-
-      .section-header{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-      .service-card{
-        border-left:1px solid var(--border);
-      }
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <!-- HEADER -->
-
-  <header id="header">
-    <div class="container">
-
-      <nav>
-
-        <div class="logo">
-          T Y B E C H
-        </div>
-
-        <div class="nav-links">
-          <a href="#about">Company</a>
-          <a href="#services">Capabilities</a>
-          <a href="#contact">Contact</a>
-          <a href="#contact" class="contact-btn">Inquiry</a>
-        </div>
-
-      </nav>
-
-    </div>
-  </header>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="container">
-
-      <div class="hero-content reveal">
-
-        <div class="hero-sub">
-          International Pharmaceutical Exports
-        </div>
-
-        <h1>
-          Trusted Global Supply Partnerships In Healthcare.
-        </h1>
-
-        <p>
-          Helixor Healthcare delivers regulated pharmaceutical export solutions
-          with a focus on compliance, consistency, documentation precision,
-          and long-term international relationships.
-        </p>
-
-        <div class="hero-actions">
-
-          <a href="#contact" class="btn btn-primary">
-            Request Information
-          </a>
-
-          <a href="#services" class="btn btn-secondary">
-            Explore Capabilities
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ABOUT -->
-
-  <section id="about">
-
-    <div class="container">
-
-      <div class="section-header reveal">
-
-        <h2 class="section-title">
-          A Structured Approach To Pharmaceutical Trade.
-        </h2>
-
-        <p>
-          Built around operational discipline, documentation accuracy,
-          and dependable manufacturing partnerships across regulated markets.
-        </p>
-
-      </div>
-
-      <div class="about-grid">
-
-        <div class="about-image reveal">
-          <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=1400&auto=format&fit=crop" alt="">
-        </div>
-
-        <div class="about-content reveal">
-
-          <h3>
-            Focused on long-term institutional and distribution relationships.
-          </h3>
-
-          <p>
-            We work with procurement teams, distributors, and healthcare
-            organizations seeking dependable pharmaceutical sourcing
-            and export coordination.
-          </p>
-
-          <p>
-            Our operating model prioritizes transparency, shipment reliability,
-            and international documentation standards across every engagement.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- SERVICES -->
-
-  <section class="services" id="services">
-
-    <div class="container">
-
-      <div class="section-header reveal">
-
-        <h2 class="section-title">
-          Core Capabilities
-        </h2>
-
-        <p>
-          Export operations designed for international buyers,
-          procurement teams, distributors, and institutional partners.
-        </p>
-
-      </div>
-
-      <div class="services-grid">
-
-        <div class="service-card reveal">
-
-          <div class="service-number">
-            01
-          </div>
-
-          <h4>
-            Pharmaceutical Exports
-          </h4>
-
-          <p>
-            Coordinated export operations for regulated pharmaceutical products.
-          </p>
-
-        </div>
-
-        <div class="service-card reveal">
-
-          <div class="service-number">
-            02
-          </div>
-
-          <h4>
-            Regulatory Documentation
-          </h4>
-
-          <p>
-            Structured support for export paperwork and compliance workflows.
-          </p>
-
-        </div>
-
-        <div class="service-card reveal">
-
-          <div class="service-number">
-            03
-          </div>
-
-          <h4>
-            Institutional Procurement
-          </h4>
-
-          <p>
-            Supply coordination for hospitals, distributors, and healthcare groups.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- STATS -->
-
-  <section class="stats">
-
-    <div class="container">
-
-      <div class="section-header reveal">
-
-        <h2 class="section-title">
-          Reliability Built Into Operations.
-        </h2>
-
-      </div>
-
-      <div class="stats-grid">
-
-        <div class="stat reveal">
-          <h2>25+</h2>
-          <p>International Markets</p>
-        </div>
-
-        <div class="stat reveal">
-          <h2>100%</h2>
-          <p>Documentation Review Workflow</p>
-        </div>
-
-        <div class="stat reveal">
-          <h2>10+</h2>
-          <p>Years Combined Trade Experience</p>
-        </div>
-
-        <div class="stat reveal">
-          <h2>24/7</h2>
-          <p>Shipment Coordination Support</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-    <div class="container">
-
-      <div class="contact-wrap">
-
-        <div class="contact-details reveal">
-
-          <h3>
-            Contact Our Export Team
-          </h3>
-
-          <p>
-            Reach out with your sourcing or export requirements
-            and our team will respond with relevant information.
-          </p>
-
-          <p>
-            inquiries@helixorhealthcare.com
-          </p>
-
-          <p>
-            Monday — Saturday
-          </p>
-
-        </div>
-
-        <form class="reveal">
-
-          <div class="form-row">
-            <input type="text" placeholder="Full Name">
-          </div>
-
-          <div class="form-row">
-            <input type="email" placeholder="Business Email">
-          </div>
-
-          <div class="form-row">
-            <input type="text" placeholder="Company Name">
-          </div>
-
-          <div class="form-row">
-            <textarea placeholder="Tell us about your requirement"></textarea>
-          </div>
-
-          <button class="submit-btn">
-            Submit Inquiry
-          </button>
-
-        </form>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-    © 2026 Helixor Healthcare Exports. All Rights Reserved.
-  </footer>
-
-  <script>
-
-    // Header Scroll
-
-    const header = document.getElementById('header');
-
-    window.addEventListener('scroll', () => {
-
-      if(window.scrollY > 50){
-        header.classList.add('scrolled');
-      } else{
-        header.classList.remove('scrolled');
-      }
-
-    });
-
-    // Reveal Animation
-
-    const reveals = document.querySelectorAll('.reveal');
-
-    function revealElements(){
-
-      reveals.forEach((el) => {
-
-        const top = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if(top < windowHeight - 80){
-          el.classList.add('active');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYBECH | International Trade, Sourcing & Procurement</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+    
+    <!-- Premium Fonts: Playfair Display for heritage, Inter for clear reading alignment -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0d1b2a;      /* Deep Midnight Blue */
+            --secondary: #1b263b;    /* Slate Corporate Tone */
+            --accent: #a67c52;       /* Premium Heritage Orange / Bronze */
+            --text: #4b5563;         /* Balanced Charcoal Body Text */
+            --light: #f5f4f0;        /* Warm Stone / Parchment */
+            --border: #d6d3cc;       /* Subtle Architectural Border */
+            --white: #ffffff;
+            
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --transition-smooth: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-      });
+        /* Base Resets */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    window.addEventListener('scroll', revealElements);
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    revealElements();
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            color: var(--primary);
+            line-height: 1.2;
+        }
 
-  </script>
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
 
+        /* --- EXCLUSIVE STICKY NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 0;
+            background: rgba(245, 244, 240, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(214, 211, 204, 0.5);
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled {
+            padding: 18px 0;
+            background: rgba(245, 244, 240, 0.95);
+            box-shadow: 0 10px 40px rgba(13, 27, 42, 0.04);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            letter-spacing: 0.18em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 45px;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        /* --- REVAMPED ASYMMETRICAL LUXURY HERO --- */
+        /* --- CENTRALIZED LUXURY HERO (UPDATED) --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background-color: var(--light);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px; /* Constrains text width for perfect readability when centered */
+            margin: 0 auto;
+            padding: 0 50px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+
+        /* Balanced lines on both sides of the centered badge */
+        .hero-badge::before, .hero-badge::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background-color: var(--accent);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 650px;
+            margin: 0 auto 45px auto;
+            font-weight: 300;
+        }
+
+        .btn-luxury {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-luxury svg {
+            fill: currentColor;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-luxury:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(13, 27, 42, 0.08);
+        }
+
+        .btn-luxury:hover svg {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+
+        /* Architectural Accent Image Container for Option 2 */
+        .hero-display-centered {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 750px;
+            height: 380px;
+            position: relative;
+        }
+
+        .display-backdrop-centered {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent);
+            z-index: 1;
+            opacity: 0.15; /* Subtle heritage orange backdrop block shadow */
+        }
+
+        .main-image-wrapper-centered {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .main-image-wrapper-centered img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Sepia and hue-rotate blend the image perfectly into your warm stone and heritage bronze/orange palette */
+            filter: grayscale(0.2) sepia(0.6) hue-rotate(340deg) contrast(1.1) brightness(0.95);
+        }
+
+        /* --- SECTION 2: PHILOSOPHY CORRIDOR --- */
+        .philosophy-section {
+            padding: 160px 0;
+            background-color: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .split-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            margin-bottom: 100px;
+            align-items: flex-start;
+        }
+
+        .split-header h2 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .split-header p {
+            font-size: 1.2rem;
+            color: var(--text);
+            font-weight: 300;
+            padding-top: 10px;
+        }
+
+        .pillars-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .pillar-node {
+            padding: 40px;
+            background-color: var(--light);
+            border: 1px solid transparent;
+            transition: var(--transition-smooth);
+        }
+
+        .pillar-node:hover {
+            background-color: var(--white);
+            border-color: var(--border);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+
+        .pillar-node h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .pillar-node p {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* --- SECTION 3: AREAS OF ENGAGEMENT MONOLITHIC GRID LAYOUT --- */
+        .engagement-section {
+            padding: 160px 0;
+            background-color: var(--light);
+        }
+
+        .center-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 100px auto;
+        }
+
+        .center-heading h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .monolith-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background-color: var(--border);
+            border: 1px solid var(--border);
+            box-shadow: 0 40px 80px rgba(13, 27, 42, 0.03);
+        }
+
+        .monolith-card {
+            background-color: var(--white);
+            padding: 60px 40px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .monolith-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-smooth);
+        }
+
+        .monolith-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .monolith-card:hover {
+            background-color: #fafaf9;
+        }
+
+        .card-index {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .monolith-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        /* --- SECTION 4: HIGH CONTENT LUXURY STATEMENT --- */
+        .statement-banner {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 180px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .statement-banner h2 {
+            color: var(--white);
+            font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+            max-width: 950px;
+            margin: 0 auto 35px auto;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .statement-banner p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .accent-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent);
+            margin: 40px auto;
+        }
+
+        /* --- SECTION 5: HISTORICAL TIMELINE OF PRINCIPLE --- */
+        .timeline-section {
+            padding: 160px 0;
+            background-color: var(--white);
+        }
+
+        .timeline-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-axis {
+            position: absolute;
+            left: 45px;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background-color: var(--border);
+        }
+
+        .timeline-node {
+            position: relative;
+            padding-left: 120px;
+            margin-bottom: 80px;
+        }
+
+        .timeline-node:last-child {
+            margin-bottom: 0;
+        }
+
+        .node-indicator {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background-color: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            z-index: 5;
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-node:hover .node-indicator {
+            background-color: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .node-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .node-content p {
+            max-width: 700px;
+            color: var(--text);
+        }
+
+        /* --- SECTION 6: THE EDITORIAL BLOCKQUOTE --- */
+        .editorial-quote {
+            padding: 140px 0;
+            background-color: var(--light);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .editorial-quote blockquote {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            font-style: italic;
+            color: var(--primary);
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            line-height: 1.35;
+        }
+
+        .quote-signature {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* --- INSTITUTIONAL FOOTER --- */
+        footer {
+            background-color: var(--white);
+            padding: 140px 0 60px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 100px;
+            margin-bottom: 120px;
+        }
+
+        .footer-intro h2 {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-intro p {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 580px;
+            font-weight: 300;
+        }
+
+        .footer-action-panel {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding-top: 25px;
+        }
+
+        .footer-base {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(214, 211, 204, 0.6);
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        /* --- SCROLL REVEAL ANIMATION ENGINE --- */
+        [data-scroll-reveal] {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        [data-scroll-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Logic */
+        @media (max-width: 1200px) {
+            .monolith-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            .hero-container, .split-header, .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .hero-display { height: 450px; margin-top: 40px; }
+            .pillars-layout { grid-template-columns: 1fr; gap: 30px; }
+            .monolith-grid { grid-template-columns: 1fr; }
+            .footer-action-panel { justify-content: flex-start; }
+            header { padding: 20px 0; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Blurring Navigation Header Bar -->
+    <header id="stickyHeader">
+        <div class="nav-container">
+            <div class="logo">TYBECH</div>
+            <nav class="nav-links">
+                <a href="#philosophy">Trade Approach</a>
+                <a href="#engagement">Areas</a>
+                <a href="#process">How We Work</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Asymmetrical Rich Luxury Hero Section -->
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">Established Sourcing Partners</span>
+                <h1>International Trade.<br>Built on Relationships.</h1>
+                <p>Sourcing, procurement, and cross-border commerce engineered with a long-term tactical view. Since every shipment carries more than goods—it carries reputation.</p>
+                <a href="#contact" class="btn-luxury">
+                    Explore Opportunities
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 1L7.295 1.705L12.585 7H1V8H12.585L7.295 13.295L8 14L14.5 7.5L8 1Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Philosophy Corridor -->
+    <section class="philosophy-section" id="philosophy">
+        <div class="section-container">
+            <div class="split-header" data-scroll-reveal>
+                <h2>Trade Is Built Over Time</h2>
+                <p>A shipment can be arranged in a matter of days. A trusted trade relationship takes years. Tybech works directly with leading manufacturers, suppliers, distributors, and bulk buyers across competitive international markets.</p>
+            </div>
+            
+            <div class="pillars-layout" data-scroll-reveal>
+                <div class="pillar-node">
+                    <h3>Reliable Partnerships</h3>
+                    <p>Long-term commercial relationships.</p>
+                </div>
+                <div class="pillar-node">
+                    <h3>Global Reach</h3>
+                    <p>Working across multiple international markets.</p>
+                </div>
+                <div class="pillar-node">
+                    <h3>Practical Execution</h3>
+                    <p>Execution focused on clarity, timelines, and coordination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Areas of Engagement Monolithic Grid Layout -->
+    <section class="engagement-section" id="engagement">
+        <div class="section-container">
+            <div class="center-heading" data-scroll-reveal>
+                <h2>Areas of Engagement</h2>
+                <p>Intentionally broad capabilities designed to optimize supply chain security without industry restrictions.</p>
+            </div>
+            
+            <div class="monolith-grid">
+                <div class="monolith-card" data-scroll-reveal>
+                    <span class="card-index">01 //</span>
+                    <h3>Sourcing</h3>
+                    <p>Identifying capable, heavily-vetted manufacturing and primary supply partners worldwide.</p>
+                </div>
+                <div class="monolith-card" data-scroll-reveal>
+                    <span class="card-index">02 //</span>
+                    <h3>Procurement</h3>
+                    <p>Supporting complex systemic purchasing and resource requirements across modern industries.</p>
+                </div>
+                <div class="monolith-card" data-scroll-reveal>
+                    <span class="card-index">03 //</span>
+                    <h3>Export</h3>
+                    <p>Strategically matching premium bulk products with active, verified international demand parameters.</p>
+                </div>
+                <div class="monolith-card" data-scroll-reveal>
+                    <span class="card-index">04 //</span>
+                    <h3>Import</h3>
+                    <p>Facilitating immediate, compliant access to highly stable global supply networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Deep Primary Bold Value Block -->
+    <section class="statement-banner">
+        <div class="section-container" data-scroll-reveal>
+            <h2>Consistency Matters Over Claims</h2>
+            <div class="accent-line"></div>
+            <p>Markets fluctuate. Regulations evolve. Global supply chains fundamentally shift. The single constant element that modern businesses continue to rely on is a partner who executes flawlessly.</p>
+        </div>
+    </section>
+
+    <!-- Section 5: Methodology Axis Timeline -->
+    <section class="timeline-section" id="process">
+        <div class="section-container">
+            <div class="center-heading" data-scroll-reveal>
+                <h2>How We Work</h2>
+            </div>
+            
+            <div class="timeline-wrapper">
+                <div class="timeline-axis"></div>
+                
+                <div class="timeline-node" data-scroll-reveal>
+                    <div class="node-indicator">I</div>
+                    <div class="node-content">
+                        <h3>Understand the Requirement</h3>
+                        <p>We clarify product specifications, target pricing, volumes, and destination requirements.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" data-scroll-reveal>
+                    <div class="node-indicator">II</div>
+                    <div class="node-content">
+                        <h3>Identify Suitable Opportunities</h3>
+                        <p>We source and evaluate suppliers across established trade networks and verified counterparts.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" data-scroll-reveal>
+                    <div class="node-indicator">III</div>
+                    <div class="node-content">
+                        <h3>Coordinate Execution</h3>
+                        <p>We manage communication, documentation, and shipment movement across all involved parties.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" data-scroll-reveal>
+                    <div class="node-indicator">IV</div>
+                    <div class="node-content">
+                        <h3>Build Lasting Relationships</h3>
+                        <p>Successful transactions are converted into repeat trade relationships where possible..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Editorial Quote Accent -->
+    <section class="editorial-quote">
+        <div class="section-container" data-scroll-reveal>
+            <blockquote class="quote-blockquote">
+                "Trade begins with products. Long-term business begins with trust."
+            </blockquote>
+            <div class="quote-signature">— Tybech</div>
+        </div>
+    </section>
+
+    <!-- Footer Corporate Context Section -->
+    <footer id="contact">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-intro" data-scroll-reveal>
+                    <h2>Let's Start a Conversation</h2>
+                    <p>Whether you are actively exploring sourcing opportunities, expanding into new foreign sectors, or seeking a more dependable trade partnership, TYBECH welcomes the initial discussion.</p>
+                </div>
+                <div class="footer-action-panel" data-scroll-reveal>
+                    <a href="mailto:mohak@tybech.com" class="btn-luxury">Get In Touch</a>
+                </div>
+            </div>
+            
+            <div class="footer-base">
+                <div>&copy; 2026 Tybech. Cross-Border Sourcing.</div>
+                <div>All operations handled with strict institutional confidence.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic Engine for Sticky Navigation and Scroll Animation Controls -->
+    <script>
+        const headerElement = document.getElementById('stickyHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        });
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((elements, observer) => {
+            elements.forEach(element => {
+                if (element.isIntersecting) {
+                    element.target.classList.add('revealed');
+                    observer.unobserve(element.target);
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('[data-scroll-reveal]').forEach(item => {
+            revealObserver.observe(item);
+        });
+    </script>
 </body>
 </html>
